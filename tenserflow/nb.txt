@@ -1,0 +1,21 @@
+
+Si vous utilisez Google Colaboratory, vous pouvez ajouter un fichier à votre environnement de travail de plusieurs manières :
+!wget https://example.com/file.txt
+!cp /path/to/local/file.txt /path/to/colab/file.txt
+with open("/path/to/intents.json") as file:
+    data = json.load(file)
+The code starts by looping through each intent in the data["intents"] list, where data is the JSON file loaded into memory. For each intent, the code loops through its patterns and performs the following steps:
+
+Tokenize the pattern using the nltk.word_tokenize() function. This function splits the pattern into individual words.
+
+Add the tokenized words to the words list. This list will eventually contain all the unique words used in the patterns.
+
+Append the tokenized words to the docs_x list. This list will contain all the tokenized patterns.
+
+Append the intent's tag to the docs_y list. This list will contain the corresponding tags for each pattern.
+
+The code then checks if the intent's tag is not in the labels list. If it's not, the tag is added to the labels list.
+
+Finally, the code creates a new list words that contains all the unique stemmed words used in the patterns, where the stemming is performed using the stemmer.stem() function. The words are also lowercased and filtered to remove the "?" character. The purpose of stemming is to reduce each word to its base or root form, which can help reduce the dimensionality of the data and improve the performance of the NLP model.
+
+ 
